@@ -1,29 +1,36 @@
 import { Factory, Weight, Ruler, Users } from "lucide-react";
+import type { Lang } from "@/lib/i18n";
 
 const stats = [
   {
     icon: Factory,
     value: "25+",
     label: "Năm kinh nghiệm",
+    labelEn: "Years of experience",
   },
   {
     icon: Weight,
     value: "30,000+",
     label: "Tấn sản phẩm/năm",
+    labelEn: "Tons per year",
   },
   {
     icon: Ruler,
     value: "15,000 m²",
     label: "Nhà xưởng",
+    labelEn: "Factory area",
   },
   {
     icon: Users,
     value: "200+",
     label: "Khách hàng",
+    labelEn: "Clients served",
   },
 ];
 
-export function StatsSection() {
+export function StatsSection({ lang }: { lang: Lang }) {
+  const isEn = lang === "en";
+
   return (
     <section className="bg-white border-b">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -37,7 +44,9 @@ export function StatsSection() {
               >
                 <Icon className="size-8 text-red-600" />
                 <p className="text-3xl font-bold text-zinc-900">{stat.value}</p>
-                <p className="text-sm text-zinc-500">{stat.label}</p>
+                <p className="text-sm text-zinc-500">
+                  {isEn ? stat.labelEn : stat.label}
+                </p>
               </div>
             );
           })}

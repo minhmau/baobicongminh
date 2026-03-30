@@ -3,11 +3,13 @@
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { categories } from "@/data/products";
+import type { Lang } from "@/lib/i18n";
 
-export function ProductFilter() {
+export function ProductFilter({ lang }: { lang: Lang }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const activeCategory = searchParams.get("category") ?? "all";
+  const isEn = lang === "en";
 
   function handleClick(slug: string) {
     const params = new URLSearchParams(searchParams.toString());
@@ -36,7 +38,7 @@ export function ProductFilter() {
                 : "rounded-full px-4 py-1.5 text-sm font-medium bg-zinc-100 text-zinc-600 hover:bg-zinc-200 transition-colors"
             }
           >
-            {cat.name}
+            {isEn ? cat.nameEn : cat.name}
           </button>
         );
       })}

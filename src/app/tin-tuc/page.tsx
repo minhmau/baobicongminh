@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { posts } from "@/data/posts";
+import { getLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Tin tức & Kiến thức bao bì",
@@ -11,19 +12,23 @@ export const metadata: Metadata = {
   alternates: { canonical: "/tin-tuc" },
 };
 
-export default function BlogListPage() {
+export default async function BlogListPage() {
+  const lang = await getLang();
+  const isEn = lang === "en";
+
   return (
     <main className="container mx-auto px-4 py-12">
       <div className="mb-10 text-center">
         <span className="font-mono text-sm font-semibold uppercase tracking-widest text-red-600">
-          Tin tức
+          {isEn ? "News" : "Tin tức"}
         </span>
         <h1 className="mt-2 text-3xl font-bold text-zinc-900 sm:text-4xl">
-          Tin tức &amp; Kiến thức bao bì
+          {isEn ? "News & Packaging Knowledge" : "Tin tức & Kiến thức bao bì"}
         </h1>
         <p className="mx-auto mt-3 max-w-2xl text-zinc-500">
-          Chia sẻ kinh nghiệm, kiến thức chuyên sâu về bao bì carton và giải
-          pháp đóng gói từ đội ngũ Bao Bì Công Minh.
+          {isEn
+            ? "Sharing expertise and in-depth knowledge about carton packaging and packaging solutions from the Cong Minh team."
+            : "Chia sẻ kinh nghiệm, kiến thức chuyên sâu về bao bì carton và giải pháp đóng gói từ đội ngũ Bao Bì Công Minh."}
         </p>
       </div>
 
@@ -47,7 +52,7 @@ export default function BlogListPage() {
             )}
             <div className="flex flex-1 flex-col p-5">
               <p className="mb-2 text-xs text-zinc-400">
-                {new Date(post.date).toLocaleDateString("vi-VN", {
+                {new Date(post.date).toLocaleDateString(isEn ? "en-US" : "vi-VN", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -60,7 +65,7 @@ export default function BlogListPage() {
                 {post.excerpt}
               </p>
               <span className="mt-4 text-sm font-medium text-red-600">
-                Đọc thêm →
+                {isEn ? "Read more →" : "Đọc thêm →"}
               </span>
             </div>
           </Link>

@@ -12,9 +12,11 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet"
 import { navLinks } from "@/data/navigation"
+import type { Lang } from "@/lib/i18n"
 
-export function MobileNav() {
+export function MobileNav({ lang }: { lang: Lang }) {
   const [open, setOpen] = useState(false)
+  const isEn = lang === "en"
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -40,7 +42,7 @@ export function MobileNav() {
               onClick={() => setOpen(false)}
               className="px-4 py-3 text-zinc-300 hover:text-white hover:bg-zinc-800 rounded-md transition-colors text-sm font-medium"
             >
-              {link.label}
+              {isEn ? link.labelEn : link.label}
             </Link>
           ))}
         </nav>
@@ -50,7 +52,7 @@ export function MobileNav() {
             onClick={() => setOpen(false)}
             className="flex items-center justify-center w-full h-10 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition-colors"
           >
-            Yêu cầu báo giá
+            {isEn ? "Request a Quote" : "Yêu cầu báo giá"}
           </Link>
         </div>
       </SheetContent>

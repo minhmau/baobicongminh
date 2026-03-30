@@ -4,8 +4,12 @@ import { Phone } from "lucide-react"
 import { navLinks } from "@/data/navigation"
 import { LanguageToggle } from "./language-toggle"
 import { MobileNav } from "./mobile-nav"
+import { getLang } from "@/lib/i18n"
 
-export function Header() {
+export async function Header() {
+  const lang = await getLang()
+  const isEn = lang === "en"
+
   return (
     <header className="sticky top-0 z-50 bg-zinc-950">
       {/* Top bar */}
@@ -52,7 +56,7 @@ export function Header() {
                 href={link.href}
                 className="px-3 py-2 text-sm text-zinc-300 hover:text-white hover:bg-zinc-800 rounded-md transition-colors font-medium"
               >
-                {link.label}
+                {isEn ? link.labelEn : link.label}
               </Link>
             ))}
           </nav>
@@ -63,10 +67,10 @@ export function Header() {
               href="/bao-gia"
               className="hidden sm:inline-flex items-center justify-center h-8 px-4 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition-colors whitespace-nowrap"
             >
-              Yêu cầu báo giá
+              {isEn ? "Request a Quote" : "Yêu cầu báo giá"}
             </Link>
             <div className="lg:hidden">
-              <MobileNav />
+              <MobileNav lang={lang} />
             </div>
           </div>
         </div>

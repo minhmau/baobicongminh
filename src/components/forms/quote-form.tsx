@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import type { Lang } from "@/lib/i18n";
 
 type FormState = {
   status: "idle" | "success" | "error";
@@ -61,7 +62,7 @@ async function submitQuote(
   }
 }
 
-const PRODUCT_OPTIONS = [
+const PRODUCT_OPTIONS_VI = [
   { value: "thung-carton-3-lop", label: "Thùng carton 3 lớp" },
   { value: "thung-carton-5-lop", label: "Thùng carton 5 lớp" },
   { value: "hop-carton-in-offset", label: "Hộp carton in offset" },
@@ -71,21 +72,42 @@ const PRODUCT_OPTIONS = [
   { value: "khac", label: "Khác" },
 ];
 
-const PRINTING_OPTIONS = [
+const PRODUCT_OPTIONS_EN = [
+  { value: "thung-carton-3-lop", label: "3-Layer Corrugated Carton Box" },
+  { value: "thung-carton-5-lop", label: "5-Layer Corrugated Carton Box" },
+  { value: "hop-carton-in-offset", label: "Offset-Printed Carton Box" },
+  { value: "hop-carton-3-lop", label: "3-Layer Carton Box" },
+  { value: "hop-carton-5-lop", label: "5-Layer Carton Box" },
+  { value: "hop-carton-co-ngan", label: "Carton Box with Dividers" },
+  { value: "khac", label: "Other" },
+];
+
+const PRINTING_OPTIONS_VI = [
   { value: "khong-in", label: "Không in" },
   { value: "in-flexo-1-3-mau", label: "In flexo 1–3 màu" },
   { value: "in-flexo-4-6-mau", label: "In flexo 4–6 màu" },
   { value: "in-offset", label: "In offset" },
 ];
 
+const PRINTING_OPTIONS_EN = [
+  { value: "khong-in", label: "No printing" },
+  { value: "in-flexo-1-3-mau", label: "Flexo 1–3 colors" },
+  { value: "in-flexo-4-6-mau", label: "Flexo 4–6 colors" },
+  { value: "in-offset", label: "Offset printing" },
+];
+
 const selectClass =
   "flex h-9 w-full rounded-lg border border-input bg-transparent px-3 py-2 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50";
 
-function QuoteFormInner() {
+function QuoteFormInner({ lang = "vi" }: { lang?: Lang }) {
   const searchParams = useSearchParams();
   const preselectedProduct = searchParams.get("product") ?? "";
+  const isEn = lang === "en";
 
   const [state, action, isPending] = useActionState(submitQuote, initialState);
+
+  const productOptions = isEn ? PRODUCT_OPTIONS_EN : PRODUCT_OPTIONS_VI;
+  const printingOptions = isEn ? PRINTING_OPTIONS_EN : PRINTING_OPTIONS_VI;
 
   if (state.status === "success") {
     if (typeof window !== "undefined") {
@@ -96,10 +118,12 @@ function QuoteFormInner() {
       <div className="rounded-xl bg-green-50 px-6 py-10 text-center space-y-2">
         <CheckCircle className="mx-auto size-10 text-green-600" />
         <p className="text-green-800 font-semibold text-lg">
-          Yêu cầu báo giá đã được gửi!
+          {isEn ? "Quote request sent!" : "Yêu cầu báo giá đã được gửi!"}
         </p>
         <p className="text-green-700 text-sm">
-          Chúng tôi sẽ liên hệ lại trong vòng 2 giờ làm việc.
+          {isEn
+            ? "We will contact you within 2 working hours."
+            : "Chúng tôi sẽ liên hệ lại trong vòng 2 giờ làm việc."}
         </p>
       </div>
     );
@@ -111,24 +135,27 @@ function QuoteFormInner() {
       <div className="grid sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <Label htmlFor="name">
-            Họ và tên <span className="text-red-600">*</span>
+            {isEn ? "Full name" : "Họ và tên"}{" "}
+            <span className="text-red-600">*</span>
           </Label>
           <Input
             id="name"
             name="name"
             type="text"
             required
-            placeholder="Nguyễn Văn A"
+            placeholder={isEn ? "John Smith" : "Nguyễn Văn A"}
             disabled={isPending}
           />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="company">Công ty</Label>
+          <Label htmlFor="company">
+            {isEn ? "Company" : "Công ty"}
+          </Label>
           <Input
             id="company"
             name="company"
             type="text"
-            placeholder="Tên công ty (nếu có)"
+            placeholder={isEn ? "Company name (optional)" : "Tên công ty (nếu có)"}
             disabled={isPending}
           />
         </div>
@@ -138,7 +165,8 @@ function QuoteFormInner() {
       <div className="grid sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <Label htmlFor="phone">
-            Số điện thoại <span className="text-red-600">*</span>
+            {isEn ? "Phone number" : "Số điện thoại"}{" "}
+            <span className="text-red-600">*</span>
           </Label>
           <Input
             id="phone"
@@ -164,7 +192,8 @@ function QuoteFormInner() {
       {/* Product type */}
       <div className="space-y-1.5">
         <Label htmlFor="product">
-          Loại sản phẩm <span className="text-red-600">*</span>
+          {isEn ? "Product type" : "Loại sản phẩm"}{" "}
+          <span className="text-red-600">*</span>
         </Label>
         <select
           id="product"
@@ -175,9 +204,9 @@ function QuoteFormInner() {
           className={selectClass}
         >
           <option value="" disabled>
-            Chọn loại sản phẩm...
+            {isEn ? "Select product type..." : "Chọn loại sản phẩm..."}
           </option>
-          {PRODUCT_OPTIONS.map((opt) => (
+          {productOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>
               {opt.label}
             </option>
@@ -188,22 +217,26 @@ function QuoteFormInner() {
       {/* Row 3: quantity + size */}
       <div className="grid sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <Label htmlFor="quantity">Số lượng</Label>
+          <Label htmlFor="quantity">
+            {isEn ? "Quantity" : "Số lượng"}
+          </Label>
           <Input
             id="quantity"
             name="quantity"
             type="text"
-            placeholder="VD: 5,000 cái/tháng"
+            placeholder={isEn ? "e.g. 5,000 pcs/month" : "VD: 5,000 cái/tháng"}
             disabled={isPending}
           />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="size">Kích thước</Label>
+          <Label htmlFor="size">
+            {isEn ? "Dimensions" : "Kích thước"}
+          </Label>
           <Input
             id="size"
             name="size"
             type="text"
-            placeholder="VD: 60 x 40 x 30 cm"
+            placeholder={isEn ? "e.g. 60 x 40 x 30 cm" : "VD: 60 x 40 x 30 cm"}
             disabled={isPending}
           />
         </div>
@@ -211,7 +244,9 @@ function QuoteFormInner() {
 
       {/* Printing */}
       <div className="space-y-1.5">
-        <Label htmlFor="printing">In ấn</Label>
+        <Label htmlFor="printing">
+          {isEn ? "Printing" : "In ấn"}
+        </Label>
         <select
           id="printing"
           name="printing"
@@ -219,8 +254,10 @@ function QuoteFormInner() {
           defaultValue=""
           className={selectClass}
         >
-          <option value="">Chọn kiểu in (tùy chọn)...</option>
-          {PRINTING_OPTIONS.map((opt) => (
+          <option value="">
+            {isEn ? "Select printing type (optional)..." : "Chọn kiểu in (tùy chọn)..."}
+          </option>
+          {printingOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>
               {opt.label}
             </option>
@@ -230,12 +267,18 @@ function QuoteFormInner() {
 
       {/* Notes */}
       <div className="space-y-1.5">
-        <Label htmlFor="notes">Ghi chú thêm</Label>
+        <Label htmlFor="notes">
+          {isEn ? "Additional notes" : "Ghi chú thêm"}
+        </Label>
         <Textarea
           id="notes"
           name="notes"
           rows={4}
-          placeholder="Yêu cầu đặc biệt, hình ảnh tham khảo, thời gian cần giao hàng..."
+          placeholder={
+            isEn
+              ? "Special requirements, reference images, delivery timeline..."
+              : "Yêu cầu đặc biệt, hình ảnh tham khảo, thời gian cần giao hàng..."
+          }
           disabled={isPending}
         />
       </div>
@@ -250,16 +293,18 @@ function QuoteFormInner() {
         className="w-full bg-red-600 hover:bg-red-700 text-white"
       >
         <Send className="mr-2 size-4" />
-        {isPending ? "Đang gửi..." : "Gửi yêu cầu báo giá"}
+        {isPending
+          ? isEn ? "Sending..." : "Đang gửi..."
+          : isEn ? "Submit Quote Request" : "Gửi yêu cầu báo giá"}
       </Button>
     </form>
   );
 }
 
-export function QuoteForm() {
+export function QuoteForm({ lang }: { lang?: Lang }) {
   return (
     <Suspense fallback={<div className="h-96 animate-pulse rounded-lg bg-zinc-100" />}>
-      <QuoteFormInner />
+      <QuoteFormInner lang={lang} />
     </Suspense>
   );
 }

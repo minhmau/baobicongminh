@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { Badge } from "@/components/ui/badge";
 import { machines, facilityStats } from "@/data/machinery";
+import { getLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Năng lực sản xuất & Hệ thống máy móc",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     "Hệ thống máy móc và thiết bị hiện đại của Bao Bì Công Minh — dây chuyền sản xuất đồng bộ, công suất lớn, đáp ứng mọi nhu cầu đặt hàng.",
 };
 
-const statsLabels: Record<keyof typeof facilityStats, string> = {
+const statsLabelsVi: Record<keyof typeof facilityStats, string> = {
   area: "Diện tích",
   factories: "Xưởng sản xuất",
   warehouses: "Kho hàng",
@@ -18,21 +19,33 @@ const statsLabels: Record<keyof typeof facilityStats, string> = {
   forklifts: "Xe nâng",
 };
 
-export default function HeThongMayMocPage() {
+const statsLabelsEn: Record<keyof typeof facilityStats, string> = {
+  area: "Floor area",
+  factories: "Production workshops",
+  warehouses: "Warehouses",
+  vehicles: "Delivery vehicles",
+  forklifts: "Forklifts",
+};
+
+export default async function HeThongMayMocPage() {
+  const lang = await getLang();
+  const isEn = lang === "en";
+  const statsLabels = isEn ? statsLabelsEn : statsLabelsVi;
+
   return (
     <main className="container mx-auto px-4 py-12">
       {/* Header */}
       <div className="mb-10">
         <p className="font-mono text-sm font-semibold uppercase tracking-widest text-red-600">
-          Năng lực sản xuất
+          {isEn ? "Production Capacity" : "Năng lực sản xuất"}
         </p>
         <h1 className="mt-2 text-3xl font-bold text-zinc-900 sm:text-4xl">
-          Hệ thống máy móc & thiết bị
+          {isEn ? "Machinery & Equipment" : "Hệ thống máy móc & thiết bị"}
         </h1>
         <p className="mt-4 max-w-2xl text-zinc-600 leading-relaxed">
-          Bao Bì Công Minh đầu tư hệ thống máy móc hiện đại từ các nước tiên
-          tiến như Đài Loan, Đức, Nhật Bản nhằm đảm bảo chất lượng sản phẩm và
-          đáp ứng tiến độ giao hàng cho khách hàng.
+          {isEn
+            ? "Cong Minh Packaging invests in modern machinery from advanced countries such as Taiwan, Germany, and Japan to ensure product quality and meet delivery schedules for customers."
+            : "Bao Bì Công Minh đầu tư hệ thống máy móc hiện đại từ các nước tiên tiến như Đài Loan, Đức, Nhật Bản nhằm đảm bảo chất lượng sản phẩm và đáp ứng tiến độ giao hàng cho khách hàng."}
         </p>
       </div>
 
@@ -55,7 +68,7 @@ export default function HeThongMayMocPage() {
       {/* Machinery grid */}
       <section>
         <h2 className="mb-6 text-2xl font-bold text-zinc-900">
-          Danh sách máy móc
+          {isEn ? "Machine list" : "Danh sách máy móc"}
         </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {machines.map((machine) => (
@@ -67,18 +80,26 @@ export default function HeThongMayMocPage() {
                 <div className="relative aspect-video w-full overflow-hidden bg-zinc-100">
                   <Image
                     src={machine.image}
-                    alt={machine.name}
+                    alt={isEn ? machine.nameEn : machine.name}
                     fill
                     className="object-cover"
                   />
                 </div>
               )}
               <div className="p-4">
-                <h3 className="font-semibold text-zinc-900">{machine.name}</h3>
-                <p className="mb-3 text-xs text-zinc-500">{machine.nameEn}</p>
+                <h3 className="font-semibold text-zinc-900">
+                  {isEn ? machine.nameEn : machine.name}
+                </h3>
+                <p className="mb-3 text-xs text-zinc-500">
+                  {isEn ? machine.name : machine.nameEn}
+                </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary">SL: {machine.quantity}</Badge>
-                  <Badge variant="outline">{machine.origin}</Badge>
+                  <Badge variant="secondary">
+                    {isEn ? "Qty" : "SL"}: {machine.quantity}
+                  </Badge>
+                  <Badge variant="outline">
+                    {isEn ? machine.originEn : machine.origin}
+                  </Badge>
                 </div>
               </div>
             </div>

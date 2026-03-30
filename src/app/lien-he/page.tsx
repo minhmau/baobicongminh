@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 import { ContactForm } from "@/components/forms/contact-form";
 import { contactInfo } from "@/data/navigation";
+import { getLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Liên hệ",
@@ -10,16 +11,19 @@ export const metadata: Metadata = {
     "Liên hệ với Bao Bì Công Minh — địa chỉ, số điện thoại, email và form gửi tin nhắn trực tuyến.",
 };
 
-export default function LienHePage() {
+export default async function LienHePage() {
+  const lang = await getLang();
+  const isEn = lang === "en";
+
   return (
     <main className="container mx-auto px-4 py-12">
       {/* Header */}
       <div className="mb-10">
         <p className="font-mono text-sm font-semibold uppercase tracking-widest text-red-600">
-          Liên hệ
+          {isEn ? "Contact" : "Liên hệ"}
         </p>
         <h1 className="mt-2 text-3xl font-bold text-zinc-900 sm:text-4xl">
-          Liên hệ với chúng tôi
+          {isEn ? "Contact Us" : "Liên hệ với chúng tôi"}
         </h1>
       </div>
 
@@ -30,15 +34,21 @@ export default function LienHePage() {
             <div className="flex gap-3">
               <MapPin className="mt-0.5 size-5 shrink-0 text-red-600" />
               <div>
-                <p className="font-semibold text-zinc-900">Địa chỉ</p>
-                <p className="mt-0.5 text-zinc-600">{contactInfo.address}</p>
+                <p className="font-semibold text-zinc-900">
+                  {isEn ? "Address" : "Địa chỉ"}
+                </p>
+                <p className="mt-0.5 text-zinc-600">
+                  {isEn ? contactInfo.addressEn : contactInfo.address}
+                </p>
               </div>
             </div>
 
             <div className="flex gap-3">
               <Phone className="mt-0.5 size-5 shrink-0 text-red-600" />
               <div>
-                <p className="font-semibold text-zinc-900">Điện thoại</p>
+                <p className="font-semibold text-zinc-900">
+                  {isEn ? "Phone" : "Điện thoại"}
+                </p>
                 <p className="mt-0.5 text-zinc-600">
                   Hotline:{" "}
                   <a
@@ -49,7 +59,7 @@ export default function LienHePage() {
                   </a>
                 </p>
                 <p className="text-zinc-600">
-                  Văn phòng:{" "}
+                  {isEn ? "Office" : "Văn phòng"}:{" "}
                   <a
                     href={`tel:${contactInfo.phone}`}
                     className="hover:underline"
@@ -76,9 +86,13 @@ export default function LienHePage() {
             <div className="flex gap-3">
               <Clock className="mt-0.5 size-5 shrink-0 text-red-600" />
               <div>
-                <p className="font-semibold text-zinc-900">Giờ làm việc</p>
+                <p className="font-semibold text-zinc-900">
+                  {isEn ? "Working hours" : "Giờ làm việc"}
+                </p>
                 <p className="mt-0.5 text-zinc-600">
-                  Thứ 2 – Thứ 7: 7:30 – 17:30
+                  {isEn
+                    ? "Mon – Sat: 7:30 – 17:30"
+                    : "Thứ 2 – Thứ 7: 7:30 – 17:30"}
                 </p>
               </div>
             </div>
@@ -94,7 +108,7 @@ export default function LienHePage() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Bản đồ Bao Bì Công Minh"
+              title={isEn ? "Cong Minh Packaging map" : "Bản đồ Bao Bì Công Minh"}
             />
           </div>
         </div>
@@ -102,9 +116,9 @@ export default function LienHePage() {
         {/* Right: contact form */}
         <div>
           <h2 className="mb-6 text-2xl font-bold text-zinc-900">
-            Gửi tin nhắn
+            {isEn ? "Send a Message" : "Gửi tin nhắn"}
           </h2>
-          <ContactForm />
+          <ContactForm lang={lang} />
         </div>
       </div>
     </main>

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { ProductCard } from "@/components/products/product-card";
 import { ProductFilter } from "@/components/products/product-filter";
 import { products } from "@/data/products";
+import { getLang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Sản phẩm bao bì carton",
@@ -14,7 +15,11 @@ export default async function SanPhamPage({
 }: {
   searchParams: Promise<{ category?: string }>;
 }) {
-  const { category } = await searchParams;
+  const [{ category }, lang] = await Promise.all([
+    searchParams,
+    getLang(),
+  ]);
+  const isEn = lang === "en";
 
   const filtered =
     category && category !== "all"
@@ -25,22 +30,22 @@ export default async function SanPhamPage({
     <main className="container mx-auto px-4 py-12">
       <div className="mb-8">
         <p className="font-mono text-sm font-semibold uppercase tracking-widest text-red-600">
-          Sản phẩm
+          {isEn ? "Products" : "Sản phẩm"}
         </p>
         <h1 className="mt-2 text-3xl font-bold text-zinc-900 sm:text-4xl">
-          Danh mục sản phẩm bao bì
+          {isEn ? "Packaging Product Catalog" : "Danh mục sản phẩm bao bì"}
         </h1>
       </div>
 
       <div className="mb-8">
         <Suspense fallback={<div className="h-10" />}>
-          <ProductFilter />
+          <ProductFilter lang={lang} />
         </Suspense>
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((product) => (
-          <ProductCard key={product.slug} product={product} />
+          <ProductCard key={product.slug} product={product} lang={lang} />
         ))}
       </div>
     </main>

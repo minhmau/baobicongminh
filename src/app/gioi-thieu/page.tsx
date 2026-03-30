@@ -90,23 +90,79 @@ export default function GioiThieuPage() {
         </div>
       </section>
 
-      {/* Org chart */}
+      {/* Org chart — coded version */}
       <section>
-        <h2 className="mb-6 text-2xl font-bold text-zinc-900">
+        <h2 className="mb-8 text-2xl font-bold text-zinc-900">
           Sơ đồ tổ chức
         </h2>
-        <div className="overflow-hidden rounded-xl border border-zinc-200">
-          <div className="relative aspect-video w-full">
-            <Image
-              src="/images/org-chart.jpg"
-              alt="Sơ đồ tổ chức Bao Bì Công Minh"
-              fill
-              className="object-contain"
-            />
+        <div className="overflow-x-auto">
+          <div className="min-w-[640px] flex flex-col items-center gap-6 pb-4">
+            {/* Director */}
+            <div className="rounded-lg bg-red-600 px-8 py-4 text-center text-white shadow-md">
+              <p className="text-xs uppercase tracking-wider text-red-200">Giám đốc</p>
+              <p className="text-lg font-bold">Mai Thị Hồng</p>
+            </div>
+
+            {/* Connector line */}
+            <div className="flex items-center gap-0">
+              <div className="h-8 w-px bg-zinc-300" />
+            </div>
+
+            {/* Two deputy directors */}
+            <div className="flex items-start gap-12 lg:gap-24">
+              {/* Technical Deputy */}
+              <div className="flex flex-col items-center gap-4">
+                <div className="rounded-lg bg-zinc-800 px-6 py-3 text-center text-white shadow-md">
+                  <p className="text-xs uppercase tracking-wider text-zinc-400">Phó GĐ Kỹ thuật</p>
+                  <p className="font-semibold">Sản xuất</p>
+                </div>
+                <div className="h-4 w-px bg-zinc-300" />
+                <div className="grid grid-cols-3 gap-2 lg:grid-cols-5">
+                  {[
+                    "Xưởng SX chính 1",
+                    "Xưởng SX chính 2",
+                    "Xưởng in offset",
+                    "Xưởng hoàn thiện",
+                    "Bộ phận giao nhận",
+                  ].map((dept) => (
+                    <div
+                      key={dept}
+                      className="rounded-md border border-zinc-200 bg-white px-3 py-2 text-center text-xs font-medium text-zinc-700 shadow-sm"
+                    >
+                      {dept}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Business Deputy */}
+              <div className="flex flex-col items-center gap-4">
+                <div className="rounded-lg bg-zinc-800 px-6 py-3 text-center text-white shadow-md">
+                  <p className="text-xs uppercase tracking-wider text-zinc-400">Phó GĐ Kinh doanh</p>
+                  <p className="font-semibold">Kinh doanh</p>
+                </div>
+                <div className="h-4 w-px bg-zinc-300" />
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    "Phòng HC nhân sự",
+                    "Phòng Kế toán",
+                    "Phòng KT & KSCL",
+                  ].map((dept) => (
+                    <div
+                      key={dept}
+                      className="rounded-md border border-zinc-200 bg-white px-3 py-2 text-center text-xs font-medium text-zinc-700 shadow-sm"
+                    >
+                      {dept}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-4 text-sm text-zinc-500 text-center">
+              Kế toán Trưởng: Nguyễn Thị Thu Huyền
+            </p>
           </div>
-          <p className="border-t border-zinc-200 bg-zinc-50 px-6 py-3 text-sm text-zinc-600 text-center">
-            Giám đốc: Mai Thị Hồng — Kế toán Trưởng: Nguyễn Thị Thu Huyền
-          </p>
         </div>
       </section>
     </main>

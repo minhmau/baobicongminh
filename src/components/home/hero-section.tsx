@@ -35,16 +35,13 @@ export function HeroSection() {
                 </Link>
               }
             />
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white/10 h-11 px-6 text-base"
-              render={
-                <a href="tel:0813086886" className="inline-flex items-center gap-2">
-                  <Phone className="size-4" />
-                  081.308.6886
-                </a>
-              }
-            />
+            <a
+              href="tel:0813086886"
+              className="inline-flex items-center gap-2 h-11 px-6 text-base font-medium rounded-md bg-white text-zinc-900 hover:bg-zinc-100 transition-colors"
+            >
+              <Phone className="size-4" />
+              081.308.6886
+            </a>
           </div>
         </div>
       </div>

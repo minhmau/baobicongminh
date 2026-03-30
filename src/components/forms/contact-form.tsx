@@ -66,9 +66,13 @@ export function ContactForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-xl bg-green-50 px-6 py-8 text-center">
-        <p className="text-green-800 font-medium">
-          Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi trong 24 giờ.
+      <div className="rounded-xl bg-green-50 px-6 py-10 text-center space-y-2">
+        <svg className="mx-auto size-10 text-green-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <p className="text-green-800 font-semibold text-lg">
+          Tin nhắn đã được gửi!
+        </p>
+        <p className="text-green-700 text-sm">
+          Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.
         </p>
       </div>
     );

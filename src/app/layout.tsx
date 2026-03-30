@@ -4,10 +4,11 @@ import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { FloatingButtons } from "@/components/layout/floating-buttons";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin", "vietnamese"],
+  subsets: ["latin", "latin-ext"],
 });
 
 const geistMono = Geist_Mono({
@@ -84,7 +85,32 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <FloatingButtons />
         </TooltipProvider>
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Bao Bì Công Minh",
+              url: "https://baobicongminh.com.vn",
+              logo: "https://baobicongminh.com.vn/images/logo.png",
+              telephone: "+84813086886",
+              email: "baobicongminh@gmail.com",
+              foundingDate: "1998",
+              description:
+                "Bao Bì Công Minh chuyên sản xuất thùng carton sóng, hộp carton, bao bì đóng gói chất lượng cao tại Hà Nội. Giao hàng nhanh, giá cạnh tranh.",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Km 12 Quốc lộ 32, Phú Diễn",
+                addressLocality: "Hà Nội",
+                addressCountry: "VN",
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   );

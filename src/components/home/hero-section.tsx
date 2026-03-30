@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import type { Lang } from "@/lib/i18n";
 
 export function HeroSection({ lang }: { lang: Lang }) {
@@ -34,15 +33,13 @@ export function HeroSection({ lang }: { lang: Lang }) {
               : "Năng lực sản xuất 30,000 tấn/năm, nhà máy tại KCN Quang Minh — cung cấp thùng carton sóng và hộp carton in offset cho hàng trăm doanh nghiệp toàn miền Bắc."}
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button
-              className="bg-red-600 hover:bg-red-700 text-white border-transparent h-11 px-6 text-base"
-              render={
-                <Link href="/bao-gia" className="inline-flex items-center gap-2">
-                  {isEn ? "Request a Quote" : "Yêu cầu báo giá"}
-                  <ArrowRight className="size-4" />
-                </Link>
-              }
-            />
+            <Link
+              href="/bao-gia"
+              className="inline-flex items-center gap-2 h-11 px-6 text-base font-medium rounded-md bg-red-600 hover:bg-red-700 text-white transition-colors"
+            >
+              {isEn ? "Request a Quote" : "Yêu cầu báo giá"}
+              <ArrowRight className="size-4" />
+            </Link>
             <a
               href="tel:0813086886"
               className="inline-flex items-center gap-2 h-11 px-6 text-base font-medium rounded-md bg-white text-zinc-900 hover:bg-zinc-100 transition-colors"

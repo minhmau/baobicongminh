@@ -30,10 +30,10 @@ export default async function GioiThieuPage() {
           {isEn ? (
             <>
               <p>
-                Cong Minh Packaging Co., Ltd. was established in 1998 with business
-                license number <strong>3870</strong>. Starting as a small enterprise,
-                over more than 25 years of development, we have become one of the
-                leading reputable corrugated carton manufacturers in Hanoi.
+                Cong Minh Packaging Co., Ltd. was established in 1998. Starting as a
+                small enterprise, over more than 25 years of development, we have
+                become one of the leading reputable corrugated carton manufacturers
+                in Hanoi.
               </p>
               <p>
                 With the motto{" "}
@@ -53,10 +53,10 @@ export default async function GioiThieuPage() {
           ) : (
             <>
               <p>
-                Công ty TNHH Bao Bì Công Minh được thành lập năm 1998, với giấy
-                phép kinh doanh số <strong>3870</strong>. Xuất phát từ một doanh nghiệp nhỏ, trải
-                qua hơn 25 năm phát triển, chúng tôi đã trở thành một trong những
-                nhà sản xuất bao bì carton sóng uy tín hàng đầu tại Hà Nội.
+                Công ty TNHH Bao Bì Công Minh được thành lập năm 1998. Xuất phát
+                từ một doanh nghiệp nhỏ, trải qua hơn 25 năm phát triển, chúng tôi
+                đã trở thành một trong những nhà sản xuất bao bì carton sóng uy tín
+                hàng đầu tại Hà Nội.
               </p>
               <p>
                 Với phương châm hoạt động{" "}

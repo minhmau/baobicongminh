@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import type { Lang } from "@/lib/i18n";
 
 export function CtaSection({ lang }: { lang: Lang }) {
@@ -17,14 +16,12 @@ export function CtaSection({ lang }: { lang: Lang }) {
             : "Liên hệ ngay để nhận báo giá nhanh chóng và tư vấn giải pháp bao bì phù hợp với nhu cầu của doanh nghiệp bạn."}
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Button
-            className="bg-white text-red-600 hover:bg-red-50 border-transparent h-11 px-6 text-base font-semibold"
-            render={
-              <Link href="/bao-gia">
-                {isEn ? "Request a Quote" : "Gửi yêu cầu báo giá"}
-              </Link>
-            }
-          />
+          <Link
+            href="/bao-gia"
+            className="inline-flex items-center justify-center h-11 px-6 text-base font-semibold rounded-md bg-white text-red-600 hover:bg-red-50 transition-colors"
+          >
+            {isEn ? "Request a Quote" : "Gửi yêu cầu báo giá"}
+          </Link>
           <a
             href="tel:0813086886"
             className="inline-flex items-center justify-center h-11 px-6 text-base font-semibold rounded-md bg-red-800 text-white hover:bg-red-900 transition-colors"

@@ -3,7 +3,6 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Menu } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import {
   Sheet,
   SheetContent,
@@ -22,7 +21,7 @@ export function MobileNav({ lang }: { lang: Lang }) {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         render={
-          <Button variant="ghost" size="icon" className="text-zinc-300 hover:text-white" />
+          <button className="inline-flex items-center justify-center rounded-md p-1.5 text-zinc-300 hover:text-white hover:bg-zinc-800 transition-colors" />
         }
       >
         <Menu className="size-5" />

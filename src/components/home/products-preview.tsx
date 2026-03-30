@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/data/products";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import type { Lang } from "@/lib/i18n";
 
 export function ProductsPreview({ lang }: { lang: Lang }) {
@@ -47,14 +46,12 @@ export function ProductsPreview({ lang }: { lang: Lang }) {
         </div>
 
         <div className="text-center">
-          <Button
-            className="bg-red-600 hover:bg-red-700 text-white border-transparent h-10 px-6"
-            render={
-              <Link href="/san-pham">
-                {isEn ? "View all products" : "Xem tất cả sản phẩm"}
-              </Link>
-            }
-          />
+          <Link
+            href="/san-pham"
+            className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium rounded-md bg-red-600 hover:bg-red-700 text-white transition-colors"
+          >
+            {isEn ? "View all products" : "Xem tất cả sản phẩm"}
+          </Link>
         </div>
       </div>
     </section>

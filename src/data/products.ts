@@ -35,7 +35,7 @@ export const products: Product[] = [
       "Kraft liner",
       "Flexo printing 1–6 colors",
     ],
-    image: "/images/products/carton-song-3-lop.webp",
+    image: "/images/products/thung-carton-3-lop1.jpg",
     featured: true,
   },
   {

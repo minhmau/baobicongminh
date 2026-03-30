@@ -56,12 +56,12 @@ export default async function ProductDetailPage({
 
       <div className="grid gap-10 lg:grid-cols-2">
         {/* Left: image */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-zinc-100">
           <Image
             src={product.image}
             alt={product.name}
             fill
-            className="object-cover"
+            className="object-contain p-4"
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority
           />

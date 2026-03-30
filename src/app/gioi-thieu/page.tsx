@@ -25,8 +25,7 @@ export default function GioiThieuPage() {
         <div className="space-y-4 text-zinc-700 leading-relaxed">
           <p>
             Công ty TNHH Bao Bì Công Minh được thành lập năm 1998, với giấy
-            phép kinh doanh số <strong>3870</strong> và mã số thuế{" "}
-            <strong>0100784051</strong>. Xuất phát từ một doanh nghiệp nhỏ, trải
+            phép kinh doanh số <strong>3870</strong>. Xuất phát từ một doanh nghiệp nhỏ, trải
             qua hơn 25 năm phát triển, chúng tôi đã trở thành một trong những
             nhà sản xuất bao bì carton sóng uy tín hàng đầu tại Hà Nội.
           </p>

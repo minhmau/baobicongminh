@@ -20,9 +20,6 @@ export function Footer() {
             <p className="text-xs text-zinc-500">
               Chuyên sản xuất thùng carton sóng, hộp carton, bao bì đóng gói chất lượng cao tại Hà Nội.
             </p>
-            <p className="text-xs text-zinc-500">
-              MST: <span className="text-zinc-400">{contactInfo.taxCode}</span>
-            </p>
           </div>
 
           {/* Column 2: Quick links */}

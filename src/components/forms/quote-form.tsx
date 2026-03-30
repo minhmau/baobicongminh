@@ -88,6 +88,10 @@ function QuoteFormInner() {
   const [state, action, isPending] = useActionState(submitQuote, initialState);
 
   if (state.status === "success") {
+    if (typeof window !== "undefined") {
+      if ("fbq" in window) (window as never as { fbq: (...args: unknown[]) => void }).fbq("track", "Lead");
+      if ("gtag" in window) (window as never as { gtag: (...args: unknown[]) => void }).gtag("event", "generate_lead", { event_category: "form" });
+    }
     return (
       <div className="rounded-xl bg-green-50 px-6 py-10 text-center space-y-2">
         <CheckCircle className="mx-auto size-10 text-green-600" />

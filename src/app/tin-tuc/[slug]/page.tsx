@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { buttonVariants } from "@/components/ui/button";
 import { posts } from "@/data/posts";
 
 export function generateStaticParams() {
@@ -93,10 +92,7 @@ export default async function BlogPostPage({
           </p>
           <Link
             href="/bao-gia"
-            className={
-              buttonVariants({ variant: "default", size: "lg" }) +
-              " bg-red-600 hover:bg-red-700 text-white border-red-600"
-            }
+            className="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-medium bg-red-600 hover:bg-red-700 text-white transition-colors"
           >
             Nhận báo giá miễn phí
           </Link>

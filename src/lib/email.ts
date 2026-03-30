@@ -1,6 +1,8 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 const FROM = "Bao Bì Công Minh <noreply@baobicongminh.com.vn>";
 const TO = process.env.CONTACT_EMAIL || "congminhpack@gmail.com";
@@ -34,7 +36,7 @@ export async function sendContactEmail(data: ContactEmailData) {
     data.message,
   ].join("\n");
 
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM,
     to: TO,
     subject: `[Liên hệ] ${data.name} — ${data.phone}`,
@@ -58,7 +60,7 @@ export async function sendQuoteEmail(data: QuoteEmailData) {
     data.notes || "—",
   ].join("\n");
 
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM,
     to: TO,
     subject: `[Báo giá] ${data.name} — ${data.product}`,

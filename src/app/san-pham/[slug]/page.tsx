@@ -4,7 +4,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
 import { products, categories } from "@/data/products";
 
 export function generateStaticParams() {
@@ -95,13 +94,13 @@ export default async function ProductDetailPage({
           <div className="mt-2 flex flex-wrap gap-3">
             <Link
               href={`/bao-gia?product=${product.slug}`}
-              className={buttonVariants({ variant: "default", size: "default" }) + " bg-red-600 hover:bg-red-700 text-white border-red-600"}
+              className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium bg-red-600 hover:bg-red-700 text-white transition-colors"
             >
               Yêu cầu báo giá
             </Link>
             <a
               href="tel:0813086886"
-              className={buttonVariants({ variant: "outline", size: "default" })}
+              className="inline-flex items-center justify-center rounded-md border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 transition-colors"
             >
               Gọi: 081.308.6886
             </a>

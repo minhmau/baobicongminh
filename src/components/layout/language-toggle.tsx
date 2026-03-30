@@ -18,7 +18,7 @@ export function LanguageToggle() {
       variant="ghost"
       size="xs"
       onClick={toggleLang}
-      className="text-xs font-mono text-zinc-300 hover:text-white"
+      className="text-xs font-medium tracking-wider text-zinc-300 hover:text-white"
     >
       VI | EN
     </Button>

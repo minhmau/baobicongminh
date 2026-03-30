@@ -54,7 +54,7 @@ export default async function BaoGiaPage() {
         {/* Left column */}
         <div className="lg:col-span-2 space-y-6">
           <div>
-            <p className="font-mono text-sm font-semibold uppercase tracking-widest text-red-600">
+            <p className="font-semibold uppercase tracking-widest text-sm text-red-600">
               {isEn ? "Quote" : "Báo giá"}
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">

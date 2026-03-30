@@ -42,7 +42,7 @@ export async function Header() {
               <span className="text-white font-bold text-sm tracking-widest">
                 CÔNG MINH
               </span>
-              <span className="text-red-500 text-[10px] font-mono tracking-[0.2em] uppercase">
+              <span className="text-red-500 text-[10px] font-medium tracking-[0.2em] uppercase">
                 PACKAGING
               </span>
             </div>

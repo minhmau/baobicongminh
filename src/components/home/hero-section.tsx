@@ -17,7 +17,7 @@ export function HeroSection({ lang }: { lang: Lang }) {
       />
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
-          <p className="font-mono text-sm text-red-500 mb-4">
+          <p className="font-medium text-sm text-red-500 mb-4">
             {isEn ? "Established since 1998" : "Thành lập từ 1998"}
           </p>
           <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl mb-6">

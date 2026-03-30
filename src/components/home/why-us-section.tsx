@@ -47,7 +47,7 @@ export function WhyUsSection({ lang }: { lang: Lang }) {
     <section className="bg-white py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
-          <p className="font-mono text-sm text-red-600 mb-2">
+          <p className="font-semibold uppercase tracking-widest text-sm text-red-600 mb-2">
             {isEn ? "Why choose us" : "Vì sao chọn chúng tôi"}
           </p>
           <h2 className="text-3xl font-bold text-zinc-900">

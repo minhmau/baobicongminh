@@ -19,7 +19,7 @@ export default async function BlogListPage() {
   return (
     <main className="container mx-auto px-4 py-12">
       <div className="mb-10 text-center">
-        <span className="font-mono text-sm font-semibold uppercase tracking-widest text-red-600">
+        <span className="font-semibold uppercase tracking-widest text-sm text-red-600">
           {isEn ? "News" : "Tin tức"}
         </span>
         <h1 className="mt-2 text-3xl font-bold text-zinc-900 sm:text-4xl">

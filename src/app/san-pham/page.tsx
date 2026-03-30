@@ -29,7 +29,7 @@ export default async function SanPhamPage({
   return (
     <main className="container mx-auto px-4 py-12">
       <div className="mb-8">
-        <p className="font-mono text-sm font-semibold uppercase tracking-widest text-red-600">
+        <p className="font-semibold uppercase tracking-widest text-sm text-red-600">
           {isEn ? "Products" : "Sản phẩm"}
         </p>
         <h1 className="mt-2 text-3xl font-bold text-zinc-900 sm:text-4xl">

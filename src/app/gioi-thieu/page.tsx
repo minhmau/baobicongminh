@@ -16,7 +16,7 @@ export default async function GioiThieuPage() {
     <main className="container mx-auto px-4 py-12">
       {/* Header */}
       <div className="mb-10">
-        <p className="font-mono text-sm font-semibold uppercase tracking-widest text-red-600">
+        <p className="font-semibold uppercase tracking-widest text-sm text-red-600">
           {isEn ? "About Us" : "Giới thiệu"}
         </p>
         <h1 className="mt-2 text-3xl font-bold text-zinc-900 sm:text-4xl">

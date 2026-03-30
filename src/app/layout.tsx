@@ -98,14 +98,14 @@ export default function RootLayout({
               url: "https://baobicongminh.com.vn",
               logo: "https://baobicongminh.com.vn/images/logo.png",
               telephone: "+84813086886",
-              email: "baobicongminh@gmail.com",
+              email: "congminhpack@gmail.com",
               foundingDate: "1998",
               description:
                 "Bao Bì Công Minh chuyên sản xuất thùng carton sóng, hộp carton, bao bì đóng gói chất lượng cao tại Hà Nội. Giao hàng nhanh, giá cạnh tranh.",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Km 12 Quốc lộ 32, Phú Diễn",
-                addressLocality: "Hà Nội",
+                streetAddress: "Lô 44-B1, KCN Quang Minh",
+                addressLocality: "Mê Linh, Hà Nội",
                 addressCountry: "VN",
               },
             }),

@@ -35,9 +35,9 @@ export const contactInfo: ContactInfo = {
   companyName: "Công ty TNHH Bao Bì Công Minh",
   companyNameEn: "Cong Minh Packaging Co., Ltd.",
   address:
-    "Số 489 Hoàng Quốc Việt, Phường Cổ Nhuế 1, Quận Bắc Từ Liêm, Hà Nội",
+    "Lô 44-B1, KCN Quang Minh, thị trấn Quang Minh, Mê Linh, Hà Nội",
   addressEn:
-    "No. 489 Hoang Quoc Viet, Co Nhue 1 Ward, Bac Tu Liem District, Hanoi",
+    "Lot 44-B1, Quang Minh Industrial Zone, Me Linh, Hanoi",
   phone: "043.586.0004",
   hotline: "081.308.6886",
   fax: "043.586.0004",

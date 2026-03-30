@@ -17,11 +17,12 @@ export function CtaSection() {
             className="bg-white text-red-600 hover:bg-red-50 border-transparent h-11 px-6 text-base font-semibold"
             render={<Link href="/bao-gia">Gửi yêu cầu báo giá</Link>}
           />
-          <Button
-            variant="outline"
-            className="border-white text-white hover:bg-white/10 h-11 px-6 text-base"
-            render={<a href="tel:0813086886">Gọi ngay: 081.308.6886</a>}
-          />
+          <a
+            href="tel:0813086886"
+            className="inline-flex items-center justify-center h-11 px-6 text-base font-semibold rounded-md bg-red-800 text-white hover:bg-red-900 transition-colors"
+          >
+            Gọi ngay: 081.308.6886
+          </a>
         </div>
       </div>
     </section>
